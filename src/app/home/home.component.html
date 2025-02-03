@@ -1,0 +1,107 @@
+<section class="home">
+  <main class="container">
+    <header>
+      <h2>Learn to code by watching others</h2>
+      <p>
+        See how experienced developers solve problems in real-time. Watching
+        scripted tutorials is great, but understanding how developers think is
+        invaluable.
+      </p>
+    </header>
+    <article>
+      <div class="btn-blue btn">
+        <p><span>Try it free 7 days</span> then S20/mo. thereafter</p>
+      </div>
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="firstName"
+            placeholder="First Name"
+            [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }"
+          />
+          <div
+            *ngIf="submitted && f['firstName'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['firstName'].errors['required']">
+              first name is required
+            </div>
+            <div *ngIf="f['firstName'].errors['minlength']">
+              Password must be at least 8 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="lastName"
+            placeholder="Last Name"
+            [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }"
+          />
+          <div
+            *ngIf="submitted && f['lastName'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['lastName'].errors['required']">
+              last name is required
+            </div>
+            <div *ngIf="f['lastName'].errors['minlength']">
+              last name must be at least 3 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Email Address"
+            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+          />
+          <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+            <div *ngIf="f['email'].errors['required']">Email is required</div>
+            <div
+              *ngIf="f['email'].errors['email'] || f['email'].errors['pattern']"
+            >
+              email is not valid
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Password"
+            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+          />
+          <div
+            *ngIf="submitted && f['password'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['password'].errors['required']">
+              Password is required
+            </div>
+            <div *ngIf="f['password'].errors['minlength']">
+              Password must be at least 8 characters
+            </div>
+            <div *ngIf="f['password'].errors['pattern']">
+              Password must contain at least a large letter, a small letter, a
+              number and a special code
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-green">
+          Claim your free trial
+        </button>
+        <p class="privacy">
+          By clicking the button. you are agreeing to our
+          <span>Terms and Services</span>
+        </p>
+      </form>
+    </article>
+  </main>
+</section>
